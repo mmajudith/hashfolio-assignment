@@ -1,20 +1,26 @@
-import React,{ useEffect } from 'react'
+import React,{ useEffect, useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 
 import { getRecords } from '../redux/actions/recordsAction'
+import CardComponents from './CardComponent'
  
  function Dashboard() {
 
-  const  { results } = useSelector(state => state.records)
-  console.log(results)
+  const [data, setData] = useState([])
+
   const dispatch = useDispatch()
+  const  { results } = useSelector(state => state.records)
+  
 
   useEffect(()=>{
 
     dispatch(getRecords())
+    if(results){
+      setData(results)
+    }
     
-  },[]);
-
+  },[results]);
+  
    return (
         <div className="dash-page-container">
 
@@ -28,9 +34,7 @@ import { getRecords } from '../redux/actions/recordsAction'
 
             <div>
               {
-                  results.map((el,id) => (<div key={id}>
-                      <p>{el.next_review_date}</p>
-                  </div>))
+                  data.map((item,id) => ( <CardComponents key={id} items={item}/>))
               }
             </div>
 

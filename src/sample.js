@@ -15,15 +15,6 @@ export const basketRecords = {
             basket: 4,
             coin: 3
             },
-            {
-            coin_id: 7,
-            coin_name: "Cardano",
-            coin_ticker: "ADA",
-            coin_logo_url: "https://cryptocompare.com/media/37746235/ada.png",
-            weightage: 3,
-            basket: 4,
-            coin: 4
-            }
         ],
         next_review_date: "2021-09-22",
         no_of_coins: 2,
